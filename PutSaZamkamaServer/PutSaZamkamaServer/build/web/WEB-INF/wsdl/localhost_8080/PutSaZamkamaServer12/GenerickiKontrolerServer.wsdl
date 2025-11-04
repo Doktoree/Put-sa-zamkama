@@ -1,0 +1,422 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://Server/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="GenerickiKontrolerServer" targetNamespace="http://Server/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://jaxb.dev.java.net/array" version="1.0">
+
+  <xs:complexType final="#all" name="intArray">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://Server/" xmlns:ns1="http://jaxb.dev.java.net/array" elementFormDefault="unqualified" targetNamespace="http://Server/" version="1.0">
+
+  <xs:import namespace="http://jaxb.dev.java.net/array"/>
+
+  <xs:element name="izmeniDK" type="tns:izmeniDK"/>
+
+  <xs:element name="izmeniDKResponse" type="tns:izmeniDKResponse"/>
+
+  <xs:element name="izvediPotez" type="tns:izvediPotez"/>
+
+  <xs:element name="izvediPotezResponse" type="tns:izvediPotezResponse"/>
+
+  <xs:element name="kreirajDK" type="tns:kreirajDK"/>
+
+  <xs:element name="kreirajDKResponse" type="tns:kreirajDKResponse"/>
+
+  <xs:element name="nadjiDk" type="tns:nadjiDk"/>
+
+  <xs:element name="nadjiDkResponse" type="tns:nadjiDkResponse"/>
+
+  <xs:element name="obrisiDK" type="tns:obrisiDK"/>
+
+  <xs:element name="obrisiDKResponse" type="tns:obrisiDKResponse"/>
+
+  <xs:element name="prijaviDK" type="tns:prijaviDK"/>
+
+  <xs:element name="prijaviDKResponse" type="tns:prijaviDKResponse"/>
+
+  <xs:element name="vratiRangListu" type="tns:vratiRangListu"/>
+
+  <xs:element name="vratiRangListuResponse" type="tns:vratiRangListuResponse"/>
+
+  <xs:complexType name="vratiRangListu">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:transferObjekatRangLista"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="transferObjekatRangLista">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="poruka" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="rangLista" nillable="true" type="tns:igra"/>
+      <xs:element name="signal" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="igra">
+    <xs:complexContent>
+      <xs:extension base="tns:generalDObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="datum" type="xs:dateTime"/>
+          <xs:element name="id" type="xs:int"/>
+          <xs:element minOccurs="0" name="korisnik" type="tns:korisnik"/>
+          <xs:element name="rezultat" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType abstract="true" name="generalDObject">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="korisnik">
+    <xs:complexContent>
+      <xs:extension base="tns:generalDObject">
+        <xs:sequence>
+          <xs:element name="idKorisnik" type="xs:int"/>
+          <xs:element minOccurs="0" name="datumRodjenja" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="ime" type="xs:string"/>
+          <xs:element minOccurs="0" name="korisnickoIme" type="xs:string"/>
+          <xs:element minOccurs="0" name="pol" type="tns:pol"/>
+          <xs:element minOccurs="0" name="prezime" type="xs:string"/>
+          <xs:element minOccurs="0" name="sifra" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="vratiRangListuResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:transferObjekatRangLista"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="izvediPotez">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:transferObjekatPartija"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="transferObjekatPartija">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nazivOperacije" type="xs:string"/>
+      <xs:element minOccurs="0" name="partija" type="tns:partija"/>
+      <xs:element name="partijaZapoceta" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="poruka" type="xs:string"/>
+      <xs:element name="signal" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="partija">
+    <xs:sequence>
+      <xs:element name="brojPoteza" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="kraj" nillable="true" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="matrica" nillable="true" type="ns1:intArray"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="pocetak" nillable="true" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="poslednjiPotez" nillable="true" type="xs:int"/>
+      <xs:element name="trenutanRed" type="xs:int"/>
+      <xs:element name="trenutnaKolona" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="izvediPotezResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:transferObjekatPartija"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="kreirajDK">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:generickiTransferObjekat"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType abstract="true" name="generickiTransferObjekat">
+    <xs:sequence>
+      <xs:element name="currentRecord" type="xs:int"/>
+      <xs:element minOccurs="0" name="gdo" type="tns:generalDObject"/>
+      <xs:element minOccurs="0" name="poruka" type="xs:string"/>
+      <xs:element name="signal" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="transferObjekatIgra">
+    <xs:complexContent>
+      <xs:extension base="tns:generickiTransferObjekat">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="igra" type="tns:igra"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="transferObjekatKorisnik">
+    <xs:complexContent>
+      <xs:extension base="tns:generickiTransferObjekat">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="korisnik" type="tns:korisnik"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="kreirajDKResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:generickiTransferObjekat"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="nadjiDk">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:generickiTransferObjekat"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="nadjiDkResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:generickiTransferObjekat"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="izmeniDK">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:generickiTransferObjekat"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="izmeniDKResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:generickiTransferObjekat"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="obrisiDK">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:generickiTransferObjekat"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="obrisiDKResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:generickiTransferObjekat"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="prijaviDK">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:transferObjekatKorisnikLogin"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="transferObjekatKorisnikLogin">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="kor" type="tns:korisnikLogin"/>
+      <xs:element minOccurs="0" name="poruka" type="xs:string"/>
+      <xs:element name="signal" type="xs:boolean"/>
+      <xs:element name="indeks" type="xs:int"/>
+      <xs:element minOccurs="0" name="nazivOperacije" type="xs:string"/>
+      <xs:element name="id" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="korisnikLogin">
+    <xs:complexContent>
+      <xs:extension base="tns:generalDObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="korisnickoIme" type="xs:string"/>
+          <xs:element minOccurs="0" name="sifra" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="prijaviDKResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:transferObjekatKorisnikLogin"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="pol">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="MUŠKI"/>
+      <xs:enumeration value="ŽENSKI"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="prijaviDKResponse">
+    <wsdl:part element="tns:prijaviDKResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="nadjiDk">
+    <wsdl:part element="tns:nadjiDk" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="nadjiDkResponse">
+    <wsdl:part element="tns:nadjiDkResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="obrisiDKResponse">
+    <wsdl:part element="tns:obrisiDKResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="izmeniDK">
+    <wsdl:part element="tns:izmeniDK" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="vratiRangListuResponse">
+    <wsdl:part element="tns:vratiRangListuResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="vratiRangListu">
+    <wsdl:part element="tns:vratiRangListu" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="izvediPotez">
+    <wsdl:part element="tns:izvediPotez" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="kreirajDK">
+    <wsdl:part element="tns:kreirajDK" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="kreirajDKResponse">
+    <wsdl:part element="tns:kreirajDKResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="obrisiDK">
+    <wsdl:part element="tns:obrisiDK" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="prijaviDK">
+    <wsdl:part element="tns:prijaviDK" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="izmeniDKResponse">
+    <wsdl:part element="tns:izmeniDKResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="izvediPotezResponse">
+    <wsdl:part element="tns:izvediPotezResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="GenerickiKontrolerServer">
+    <wsdl:operation name="vratiRangListu">
+      <wsdl:input message="tns:vratiRangListu" name="vratiRangListu">
+    </wsdl:input>
+      <wsdl:output message="tns:vratiRangListuResponse" name="vratiRangListuResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="izvediPotez">
+      <wsdl:input message="tns:izvediPotez" name="izvediPotez">
+    </wsdl:input>
+      <wsdl:output message="tns:izvediPotezResponse" name="izvediPotezResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="kreirajDK">
+      <wsdl:input message="tns:kreirajDK" name="kreirajDK">
+    </wsdl:input>
+      <wsdl:output message="tns:kreirajDKResponse" name="kreirajDKResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="nadjiDk">
+      <wsdl:input message="tns:nadjiDk" name="nadjiDk">
+    </wsdl:input>
+      <wsdl:output message="tns:nadjiDkResponse" name="nadjiDkResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="izmeniDK">
+      <wsdl:input message="tns:izmeniDK" name="izmeniDK">
+    </wsdl:input>
+      <wsdl:output message="tns:izmeniDKResponse" name="izmeniDKResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obrisiDK">
+      <wsdl:input message="tns:obrisiDK" name="obrisiDK">
+    </wsdl:input>
+      <wsdl:output message="tns:obrisiDKResponse" name="obrisiDKResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="prijaviDK">
+      <wsdl:input message="tns:prijaviDK" name="prijaviDK">
+    </wsdl:input>
+      <wsdl:output message="tns:prijaviDKResponse" name="prijaviDKResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="GenerickiKontrolerServerSoapBinding" type="tns:GenerickiKontrolerServer">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="vratiRangListu">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="vratiRangListu">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="vratiRangListuResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="izvediPotez">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="izvediPotez">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="izvediPotezResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="kreirajDK">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="kreirajDK">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="kreirajDKResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="nadjiDk">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="nadjiDk">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="nadjiDkResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="izmeniDK">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="izmeniDK">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="izmeniDKResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obrisiDK">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="obrisiDK">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="obrisiDKResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="prijaviDK">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="prijaviDK">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="prijaviDKResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GenerickiKontrolerServer">
+    <wsdl:port binding="tns:GenerickiKontrolerServerSoapBinding" name="GenerickiKontrolerServerPort">
+      <soap:address location="http://localhost:8080/PutSaZamkamaServer12/GenerickiKontrolerServer"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

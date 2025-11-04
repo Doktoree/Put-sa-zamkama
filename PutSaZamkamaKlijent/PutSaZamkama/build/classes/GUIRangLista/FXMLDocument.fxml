@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="424.0" prefWidth="641.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="GUIRangLista.FXMLDocumentController">
+   <children>
+      <Pane prefHeight="424.0" prefWidth="641.0">
+         <children>
+            <Text layoutX="240.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rang lista" wrappingWidth="301.6708984375">
+               <font>
+                  <Font size="37.0" />
+               </font>
+            </Text>
+            <TableView fx:id="tabela" layoutY="61.0" prefHeight="366.0" prefWidth="641.0">
+              <columns>
+                <TableColumn fx:id="korisnickoIme" prefWidth="213.0" text="Korisničko ime" />
+                  <TableColumn fx:id="rezultat" prefWidth="215.0" text="Rezultat" />
+                  <TableColumn fx:id="datum" prefWidth="213.0" text="Datum" />
+              </columns>
+            </TableView>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

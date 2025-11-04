@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="443.0" prefWidth="373.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUIKorisnik.FXMLDocumentController">
+   <children>
+      <Pane prefHeight="521.0" prefWidth="373.0">
+         <children>
+            <Text fx:id="naslov" layoutX="133.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Korisnik" wrappingWidth="170.6708984375" />
+            <Text fx:id="naslovId" layoutX="14.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID korisnika:" />
+            <TextField fx:id="idKorisnik" editable="false" layoutX="133.0" layoutY="53.0" prefHeight="31.0" prefWidth="226.0" />
+            <Text layoutX="14.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Korisničko ime:" />
+            <TextField fx:id="korisnickoIme" layoutX="133.0" layoutY="102.0" prefHeight="31.0" prefWidth="226.0" />
+            <Text layoutX="14.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ime:" />
+            <TextField fx:id="ime" layoutX="133.0" layoutY="154.0" prefHeight="31.0" prefWidth="226.0" />
+            <Text layoutX="14.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prezime:" />
+            <Text layoutX="14.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sifra:" />
+            <Text layoutX="14.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datum rodjenja:" />
+            <TextField fx:id="prezime" layoutX="133.0" layoutY="205.0" prefHeight="31.0" prefWidth="226.0" />
+            <PasswordField fx:id="sifra" layoutX="133.0" layoutY="256.0" prefHeight="31.0" prefWidth="226.0" />
+            <DatePicker fx:id="datumRodjenja" layoutX="133.0" layoutY="309.0" prefHeight="31.0" prefWidth="226.0" />
+            <Button fx:id="obrisiKorisnika" layoutX="16.0" layoutY="442.0" mnemonicParsing="false" text="Obriši korisnika" />
+            <Button fx:id="zapamtiKorisnika" layoutX="207.0" layoutY="442.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="152.0" text="Zapamti korisnika" />
+            <Text layoutX="16.0" layoutY="387.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pol:" />
+            <ComboBox fx:id="pol" layoutX="133.0" layoutY="366.0" prefHeight="31.0" prefWidth="226.0" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

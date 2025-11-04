@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUIPrijavljivanje.FXMLDocumentController">
+   <children>
+      <Text layoutX="134.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prijavljivanje korisnika">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Text>
+      <Text fx:id="textKorisnickoIme" layoutX="20.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Korisničko ime: ">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Text>
+      <Text fx:id="textLozinka" layoutX="20.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lozinka:">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Text>
+      <TextField fx:id="korisnickoIme" layoutX="223.0" layoutY="82.0" prefHeight="31.0" prefWidth="308.0" />
+      <PasswordField fx:id="sifra" layoutX="223.0" layoutY="150.0" prefHeight="31.0" prefWidth="308.0" />
+      <Button fx:id="btnRegistrujSe" layoutX="27.0" layoutY="228.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="152.0" text="Registruj se" />
+      <Button fx:id="btnPrijaviSe" layoutX="377.0" layoutY="228.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="152.0" text="Prijavi se" />
+   </children>
+</AnchorPane>
